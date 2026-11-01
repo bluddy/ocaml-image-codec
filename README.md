@@ -98,13 +98,4 @@ let img = ImageCodec_unix.openfile "photo.png" in
 ImageCodec_unix.writefile "photo.jpg" img
 ```
 
-### Handling unsupported formats
-
-For formats not natively supported (e.g., TIFF, WebP), `ImageCodec_unix` automatically falls back to ImageMagick's `convert` utility if available:
-
-```ocaml
-(* This will use ImageMagick to convert TIFF to PNG internally, then read it *)
-let img = ImageCodec_unix.openfile "document.tiff"
-```
-
-> **Note**: The native implementations are pure OCaml and have no external dependencies. The ImageMagick fallback is only used for unsupported formats.
+All supported formats (PNG, JPEG, GIF, BMP, PPM/PGM/PBM) are handled natively with pure OCaml implementations. No external dependencies beyond `decompress`.
